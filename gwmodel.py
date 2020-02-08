@@ -26,17 +26,17 @@ def infect_day(courier_n,resident_n,parcel_n):
         #print(courier)
         #print(courier[1][3])
 
-        for i in range(len(courier)):
+        for i in range(courier_n):
             if courier[i] == 1:
-                for j in range(len(parcel)):
-                    resident[parcel[i][j]]=1 #被传染快递员投递过的居民也会被传染
+                for j in range(parcel_n):
+                    resident[parcel[i][j]-1]=1 #被传染快递员投递过的居民也会被传染
 
-                    for m in range(len(courier)):
-                        for n in range(len(parcel)):
-                            if parcel[m][n]==resident[parcel[i][j]]:
+                    for m in range(courier_n):
+                        for n in range(parcel_n):
+                            if parcel[m][n]==resident[parcel[i][j]-1]:
                                 courier[m]=1 #接触过该居民的快递员也都会被传染
 
-        if resident[0]==1:
+        if resident[0]==1: #当居民0号被感染，则程序停止
             break
 
     return day
