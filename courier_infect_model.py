@@ -1,11 +1,11 @@
 import random
 
-infect_threshold = 0.5
+infect_threshold = 0.1
 n_residents = 1000
 n_couriers = 10
-n_sim_days = 10
-p_send = 1
-p_receive = 1
+n_sim_days = 50
+p_send = 0.1
+p_receive = 0.5
 
 class Civilian:
     '''resident who may be infected by other people'''
@@ -39,9 +39,9 @@ couriers = []
 
 for i in range(n_residents):
     residents.append(Civilian())
-residents[0].infected =  True
 for i in range(n_couriers):
     couriers.append(Courier())
+couriers[0].infected =  True
 
 for day in range (n_sim_days):
     for resident in residents:
